@@ -1,0 +1,19 @@
+courses:
+  - id: productivity
+    name: "Системное мышление и продуктивность"
+    description: "7 практических уроков"
+    days:
+      - title: "День 1: Основы системного мышления"
+        file: "productivity/day1.md"
+      - title: "День 2: Управление временем"
+        file: "productivity/day2.md"
+      - title: "День 3: Приоритеты"
+        file: "productivity/day3.md"
+      - title: "День 4: Глубокая работа"
+        file: "productivity/day4.md"
+      - title: "День 5: Привычки"
+        file: "productivity/day5.md"
+      - title: "День 6: Энергия"
+        file: "productivity/day6.md"
+      - title: "День 7: Финальный план"
+        file: "productivity/day7.md"
