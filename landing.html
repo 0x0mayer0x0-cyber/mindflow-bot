@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
+<title>MindFlow Academy — Прокачай себя за 14 дней</title>
+<meta name="description" content="AI-наставник в Telegram. Курсы по продуктивности, финансам и бизнесу. 7 дней бесплатно. Подписка от 149₽."/>
+<meta property="og:title" content="MindFlow Academy 🧠"/>
+<meta property="og:description" content="Прокачай навыки за 14 дней. AI-наставник в Telegram. Старт бесплатно!"/>
+<meta property="og:image" content="https://placehold.co/1200x630/04080f/38bdf8?text=MindFlow+Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#04080f"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#04080f;--s:#0d1626;--s2:#111d35;
+  --b:rgba(56,189,248,.12);--a:#38bdf8;
+  --a2:#818cf8;--a3:#f472b6;
+  --t:#e2e8f0;--m:#64748b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6;font-size:16px}
+
+/* MESH */
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.09;animation:blob 20s ease-in-out infinite}
+.blob:nth-child(1){width:500px;height:500px;background:#38bdf8;top:-150px;left:-80px}
+.blob:nth-child(2){width:400px;height:400px;background:#818cf8;top:50%;right:-80px;animation-delay:-8s}
+.blob:nth-child(3){width:300px;height:300px;background:#f472b6;bottom:-50px;left:40%;animation-delay:-15s}
+@keyframes blob{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+
+/* PROGRESS */
+#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--a),var(--a2),var(--a3));z-index:999;width:0}
+
+/* LANG SWITCHER */
+.lang-bar{position:fixed;top:0;right:0;z-index:200;padding:8px 16px;display:flex;gap:8px}
+.lang-btn{background:transparent;border:1px solid var(--b);border-radius:8px;padding:4px 10px;color:var(--m);font-size:.7rem;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif}
+.lang-btn.active,.lang-btn:hover{border-color:var(--a);color:var(--a);background:rgba(56,189,248,.06)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(4,8,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none;letter-spacing:-.02em;flex-shrink:0}
+.logo em{color:var(--a);font-style:normal}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--m);text-decoration:none;font-size:.8rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--t)}
+.nav-btn{background:linear-gradient(135deg,var(--a),#0ea5e9);color:#04080f;padding:10px 20px;border-radius:100px;font-weight:700;font-size:.82rem;text-decoration:none;transition:.25s;white-space:nowrap;box-shadow:0 0 20px rgba(56,189,248,.3);flex-shrink:0}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(56,189,248,.5)}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 20px 60px;position:relative;z-index:1;text-align:center}
+.live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:100px;padding:6px 16px;font-size:.72rem;font-weight:600;color:#4ade80;margin-bottom:24px;letter-spacing:.06em;animation:fu .5s both}
+.ldot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)}}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,8vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-.035em;margin-bottom:20px;animation:fu .5s .1s both}
+.hl2{display:block;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hl3{display:block;color:var(--a3)}
+.hero-sub{font-size:clamp(.95rem,3vw,1.15rem);color:var(--m);max-width:520px;margin:0 auto 36px;font-weight:300;animation:fu .5s .2s both;line-height:1.75}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:12px;animation:fu .5s .3s both}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--a),#0ea5e9);color:#04080f;padding:16px 36px;border-radius:16px;font-weight:700;font-size:1rem;text-decoration:none;transition:.25s;box-shadow:0 0 50px rgba(56,189,248,.4)}
+.btn-hero:hover,.btn-hero:active{transform:translateY(-3px);box-shadow:0 8px 60px rgba(56,189,248,.55)}
+.hero-note{font-size:.78rem;color:var(--m)}
+.hero-note strong{color:#f5c842}
+.hero-stats{display:flex;gap:32px;margin-top:44px;animation:fu .5s .4s both;flex-wrap:wrap;justify-content:center}
+.hs{text-align:center}
+.hs-num{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:#fff;line-height:1}
+.hs-num sup{font-size:.85rem;color:var(--a)}
+.hs-label{font-size:.68rem;color:var(--m);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* PROOF TICKER */
+.ticker{background:rgba(56,189,248,.04);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:14px 0;overflow:hidden;position:relative;z-index:1}
+.ticker-track{display:flex;gap:48px;animation:tick 30s linear infinite;width:max-content;white-space:nowrap}
+.ticker-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--m);font-weight:500;flex-shrink:0}
+.ticker-item strong{color:var(--t)}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* DIVIDER */
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--b),transparent);position:relative;z-index:1}
+
+/* SECTIONS */
+.section{padding:80px 0;position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.stag{display:inline-flex;align-items:center;gap:8px;color:var(--a);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.stag::before{content:'';width:22px;height:2px;background:var(--a)}
+.stitle{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:12px}
+.ssub{color:var(--m);font-size:.95rem;font-weight:300;line-height:1.75;max-width:500px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* BENEFITS */
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px}
+.ben-card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:28px 24px;transition:.35s;position:relative;overflow:hidden}
+.ben-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--a),transparent);opacity:0;transition:.35s}
+.ben-card:hover{border-color:rgba(56,189,248,.25);transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,.3)}
+.ben-card:hover::before{opacity:1}
+.ben-icon{font-size:28px;margin-bottom:14px}
+.ben-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px}
+.ben-text{color:var(--m);font-size:.84rem;line-height:1.6;font-weight:300}
+.ben-tag{display:inline-block;margin-top:12px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ade80;padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:600}
+.ben-tag.pink{background:rgba(244,114,182,.08);border-color:rgba(244,114,182,.2);color:var(--a3)}
+
+/* COURSES */
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.c-card{background:var(--s);border:1px solid var(--b);border-radius:22px;overflow:hidden;transition:.35s}
+.c-card:hover{border-color:rgba(129,140,248,.4);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.c-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative}
+.c-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--s))}
+.th1{background:linear-gradient(135deg,#0f1f30,#1a3a4a,#0d4a6b)}
+.th2{background:linear-gradient(135deg,#1a0533,#2d1b69,#0f5a4a)}
+.th3{background:linear-gradient(135deg,#2d001a,#5a0030,#8b1a00)}
+.c-body{padding:20px}
+.c-tag{display:inline-block;padding:2px 10px;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.08em;margin-bottom:10px}
+.ct1{background:rgba(56,189,248,.1);color:var(--a);border:1px solid rgba(56,189,248,.2)}
+.ct2{background:rgba(129,140,248,.1);color:var(--a2);border:1px solid rgba(129,140,248,.2)}
+.ct3{background:rgba(244,114,182,.1);color:var(--a3);border:1px solid rgba(244,114,182,.2)}
+.c-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.c-desc{color:var(--m);font-size:.8rem;line-height:1.6;margin-bottom:14px;font-weight:300}
+.c-foot{display:flex;justify-content:space-between;align-items:center}
+.c-days{font-size:.72rem;color:var(--m)}
+.c-free{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;padding:3px 9px;border-radius:100px;font-size:.68rem;font-weight:700}
+
+/* COURSE PREVIEW */
+.preview-wrap{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:28px;margin-top:32px}
+.preview-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.ptab{background:transparent;border:1px solid var(--b);border-radius:100px;padding:7px 16px;color:var(--m);font-size:.78rem;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif}
+.ptab.active{background:var(--a);color:#04080f;border-color:var(--a)}
+.preview-list{display:flex;flex-direction:column;gap:0}
+.pl-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--b);font-size:.84rem}
+.pl-item:last-child{border-bottom:none}
+.pl-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.pn-done{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.2)}
+.pn-free{background:rgba(56,189,248,.1);color:var(--a);border:1px solid rgba(56,189,248,.2)}
+.pn-lock{background:rgba(100,116,139,.08);color:var(--m);border:1px solid rgba(100,116,139,.1)}
+.pl-name{flex:1;font-weight:500}
+.pl-badge{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:6px}
+.pl-badge.free{background:rgba(56,189,248,.1);color:var(--a)}
+.pl-badge.lock{background:rgba(100,116,139,.08);color:var(--m)}
+
+/* PRICING */
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.p-card{background:var(--s);border:1px solid var(--b);border-radius:22px;padding:30px 24px;position:relative;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.p-card.pop{border-color:rgba(56,189,248,.4);background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.04))}
+.p-card:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,.3)}
+.p-badge{position:absolute;top:14px;right:14px;background:linear-gradient(135deg,var(--a),var(--a2));color:#04080f;padding:3px 10px;border-radius:100px;font-size:.65rem;font-weight:700}
+.p-plan{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--m);margin-bottom:8px}
+.p-price{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;line-height:1;margin-bottom:4px}
+.p-price sup{font-size:.9rem;color:var(--a)}
+.p-per{font-size:.76rem;color:var(--m);margin-bottom:20px}
+.p-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;flex:1}
+.p-features li{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:300}
+.p-features li.yes::before{content:'✓';color:#4ade80;font-weight:700;flex-shrink:0}
+.p-features li.no{color:var(--m)}
+.p-features li.no::before{content:'✗';color:var(--m);font-weight:700;flex-shrink:0}
+.p-btn{display:block;text-align:center;padding:12px;border-radius:12px;font-weight:700;font-size:.88rem;text-decoration:none;transition:.25s;margin-top:auto}
+.p-btn.pr{background:linear-gradient(135deg,var(--a),#0ea5e9);color:#04080f;box-shadow:0 0 22px rgba(56,189,248,.3)}
+.p-btn.pr:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(56,189,248,.5)}
+.p-btn.ou{border:1px solid var(--b);color:var(--t)}
+.p-btn.ou:hover{border-color:var(--a);color:var(--a)}
+.pay-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.pay-chip{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:10px 16px;font-size:.78rem;font-weight:500;color:var(--m);display:flex;align-items:center;gap:6px}
+.pay-chip strong{color:var(--t)}
+
+/* HOW */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.h-card{background:var(--s);border:1px solid var(--b);border-radius:18px;padding:24px 18px;text-align:center;transition:.35s}
+.h-card:hover{border-color:rgba(56,189,248,.25);transform:translateY(-4px)}
+.h-num{width:40px;height:40px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:#04080f;margin:0 auto 14px}
+.h-icon{font-size:26px;margin-bottom:10px}
+.h-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:7px}
+.h-text{color:var(--m);font-size:.8rem;line-height:1.55;font-weight:300}
+
+/* REF */
+.ref-box{background:linear-gradient(135deg,rgba(56,189,248,.05),rgba(129,140,248,.04));border:1px solid rgba(56,189,248,.12);border-radius:24px;padding:48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ref-title{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-.025em;margin-bottom:12px;line-height:1.1}
+.ref-sub{color:var(--m);font-size:.9rem;font-weight:300;line-height:1.7;margin-bottom:22px}
+.ref-feats{display:flex;flex-direction:column;gap:14px}
+.rf{display:flex;align-items:flex-start;gap:12px}
+.rf-icon{width:36px;height:36px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.rf-title{font-weight:600;font-size:.86rem;margin-bottom:2px}
+.rf-text{color:var(--m);font-size:.78rem;line-height:1.5;font-weight:300}
+.ref-flow{display:flex;flex-direction:column;gap:0}
+.rs{display:flex;gap:16px;position:relative}
+.rs:not(:last-child)::after{content:'';position:absolute;left:17px;top:40px;bottom:-12px;width:2px;background:linear-gradient(to bottom,var(--a),transparent)}
+.rs-circle{width:36px;height:36px;border:2px solid var(--a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Syne',sans-serif;background:rgba(56,189,248,.06);flex-shrink:0}
+.rs-body{padding-bottom:24px}
+.rs-title{font-weight:600;font-size:.86rem;margin-bottom:2px}
+.rs-text{color:var(--m);font-size:.78rem;font-weight:300}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.rev-card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:26px;transition:.3s}
+.rev-card:hover{border-color:rgba(56,189,248,.2);transform:translateY(-3px)}
+.rev-stars{color:#f5c842;font-size:.85rem;letter-spacing:3px;margin-bottom:12px}
+.rev-text{color:var(--m);font-size:.84rem;line-height:1.7;margin-bottom:18px;font-style:italic;font-weight:300}
+.rev-author{display:flex;align-items:center;gap:10px}
+.rav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#04080f;flex-shrink:0}
+.rv1{background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
+.rv2{background:linear-gradient(135deg,#818cf8,#a78bfa)}
+.rv3{background:linear-gradient(135deg,#f472b6,#fb923c)}
+.rv4{background:linear-gradient(135deg,#4ade80,#22c55e)}
+.rv5{background:linear-gradient(135deg,#f5c842,#f97316)}
+.rv6{background:linear-gradient(135deg,#e879f9,#818cf8)}
+.rv7{background:linear-gradient(135deg,#38bdf8,#818cf8)}
+.rv8{background:linear-gradient(135deg,#f472b6,#38bdf8)}
+.rv9{background:linear-gradient(135deg,#4ade80,#38bdf8)}
+.rname{font-weight:600;font-size:.84rem}
+.rrole{font-size:.72rem;color:var(--m)}
+.rev-verified{display:flex;align-items:center;gap:4px;font-size:.68rem;color:#4ade80;margin-top:4px;font-weight:600}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:48px;max-width:700px;margin-left:auto;margin-right:auto}
+.faq-item{background:var(--s);border:1px solid var(--b);border-radius:14px;overflow:hidden;transition:.25s}
+.faq-item:hover{border-color:rgba(56,189,248,.2)}
+.faq-q{padding:18px 20px;font-weight:600;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;user-select:none}
+.faq-ic{color:var(--a);font-size:1.1rem;transition:.3s;flex-shrink:0}
+.faq-item.open .faq-ic{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 20px}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+.faq-a p{color:var(--m);font-size:.84rem;line-height:1.7;font-weight:300}
+
+/* CONTACTS */
+.contacts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.con-card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:28px 22px;text-align:center;transition:.35s}
+.con-card:hover{border-color:rgba(56,189,248,.25);transform:translateY(-4px)}
+.con-icon{font-size:32px;margin-bottom:14px}
+.con-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:6px}
+.con-text{color:var(--m);font-size:.82rem;margin-bottom:14px;font-weight:300}
+.con-link{display:inline-block;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);color:var(--a);padding:8px 18px;border-radius:100px;font-size:.78rem;font-weight:600;text-decoration:none;transition:.2s}
+.con-link:hover{background:rgba(56,189,248,.15)}
+
+/* FINAL CTA */
+.fcta{text-align:center;padding:80px 20px;position:relative;z-index:1}
+.fcta-title{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-.035em;margin-bottom:16px;line-height:1.0}
+.fcta-sub{color:var(--m);font-size:1rem;max-width:440px;margin:0 auto 32px;font-weight:300;line-height:1.75}
+.cnt-line{margin-top:18px;font-size:.78rem;color:var(--m)}
+.cnt-line strong{color:var(--a3)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--b);padding:36px 0;position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.f-links{display:flex;gap:20px;flex-wrap:wrap}
+.f-links a{color:var(--m);text-decoration:none;font-size:.78rem;transition:.2s}
+.f-links a:hover{color:var(--t)}
+.f-copy{font-size:.74rem;color:var(--m)}
+
+/* AI CHAT */
+.chat-widget{position:fixed;bottom:24px;right:24px;z-index:500}
+.chat-bubble-btn{width:56px;height:56px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 28px rgba(56,189,248,.4);border:none;font-size:22px;color:#04080f;transition:.25s}
+.chat-bubble-btn:hover{transform:scale(1.1)}
+.chat-panel{position:absolute;bottom:68px;right:0;width:300px;background:var(--s);border:1px solid var(--b);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column;max-height:400px}
+.chat-panel.open{display:flex}
+.chat-head{padding:16px 18px;background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(129,140,248,.07));border-bottom:1px solid var(--b);display:flex;align-items:center;gap:10px}
+.chat-av{width:32px;height:32px;background:linear-gradient(135deg,var(--a),var(--a2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.chat-name-t{font-weight:700;font-size:.85rem}
+.chat-on{font-size:.68rem;color:#4ade80}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.cm{padding:9px 12px;border-radius:12px;font-size:.78rem;line-height:1.5;max-width:85%;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cm.bot{background:var(--s2);border:1px solid var(--b);border-bottom-left-radius:3px}
+.cm.usr{background:linear-gradient(135deg,var(--a),#0ea5e9);color:#04080f;margin-left:auto;border-bottom-right-radius:3px;font-weight:500}
+.chat-inp-row{display:flex;gap:7px;padding:10px;border-top:1px solid var(--b)}
+.chat-inp{flex:1;background:var(--s2);border:1px solid var(--b);border-radius:9px;padding:8px 12px;color:var(--t);font-family:'Inter',sans-serif;font-size:.78rem;outline:none}
+.chat-send{width:32px;height:32px;background:var(--a);border-radius:9px;border:none;cursor:pointer;color:#04080f;font-size:14px;transition:.2s;flex-shrink:0}
+.chat-send:hover{background:#7dd3fc}
+
+/* MOBILE */
+@media(max-width:900px){
+  .ben-grid{grid-template-columns:1fr}
+  .c-grid{grid-template-columns:1fr}
+  .p-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .ref-box{grid-template-columns:1fr;padding:32px 24px;gap:32px}
+  .rev-grid{grid-template-columns:1fr}
+  .contacts-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .lang-bar{top:auto;bottom:auto}
+}
+@media(max-width:600px){
+  .how-grid{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+  .nav-btn{padding:9px 16px;font-size:.78rem}
+  .chat-panel{width:260px}
+}
+</style>
+</head>
+<body>
+<div id="pb"></div>
+<div class="mesh"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
+
+<!-- LANG SWITCHER -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Mind<em>Flow</em></a>
+    <ul class="nav-links">
+      <li><a href="#courses" data-ru="Курсы" data-en="Courses">Курсы</a></li>
+      <li><a href="#pricing" data-ru="Цены" data-en="Pricing">Цены</a></li>
+      <li><a href="#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a></li>
+      <li><a href="#contacts" data-ru="Контакты" data-en="Contacts">Контакты</a></li>
+    </ul>
+    <a href="https://t.me/MindFlowAcademyBot" class="nav-btn" target="_blank" data-ru="✈️ Открыть бота" data-en="✈️ Open Bot">✈️ Открыть бота</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="live-badge"><span class="ldot"></span> <span data-ru="СТАРТ БЕСПЛАТНО · 7 ДНЕЙ" data-en="FREE START · 7 DAYS">СТАРТ БЕСПЛАТНО · 7 ДНЕЙ</span></div>
+  <h1 class="hero-title">
+    <span data-ru="Прокачай себя" data-en="Level yourself up">Прокачай себя</span>
+    <span class="hl2" data-ru="за 14 дней" data-en="in 14 days">за 14 дней</span>
+    <span class="hl3">с AI-ботом 🧠</span>
+  </h1>
+  <p class="hero-sub" data-ru="Персональный AI-наставник в Telegram. Курсы по продуктивности, финансам и бизнесу. Первые 4 урока — бесплатно. Результат уже через неделю." data-en="Personal AI mentor in Telegram. Courses on productivity, finance and business. First 4 lessons are free. Results in just one week.">Персональный AI-наставник в Telegram. Курсы по продуктивности, финансам и бизнесу. Первые 4 урока — бесплатно. Результат уже через неделю.</p>
+  <div class="hero-cta">
+    <a href="https://t.me/MindFlowAcademyBot" class="btn-hero" target="_blank">✈️ <span data-ru="Запустить бота бесплатно" data-en="Start Bot for Free">Запустить бота бесплатно</span></a>
+    <div class="hero-note" data-ru="🎁 7 дней бесплатно · Без карты · Мгновенный старт" data-en="🎁 7 days free · No card · Instant start">🎁 7 дней бесплатно · <strong>Без карты</strong> · Мгновенный старт</div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-num">2<sup>K+</sup></div><div class="hs-label" data-ru="Учеников" data-en="Students">Учеников</div></div>
+    <div class="hs"><div class="hs-num">3</div><div class="hs-label" data-ru="Курса" data-en="Courses">Курса</div></div>
+    <div class="hs"><div class="hs-num">14</div><div class="hs-label" data-ru="Уроков в курсе" data-en="Lessons each">Уроков в курсе</div></div>
+    <div class="hs"><div class="hs-num">98<sup>%</sup></div><div class="hs-label" data-ru="Довольных" data-en="Satisfied">Довольных</div></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">✅ <strong>Артём</strong> начал курс по продуктивности</div>
+    <div class="ticker-item">⭐ <strong>Марина</strong> оплатила за 3 секунды через Stars</div>
+    <div class="ticker-item">🎁 <strong>Дима</strong> получил 35 дней за 5 приглашений</div>
+    <div class="ticker-item">🚀 <strong>Алина</strong> запустила бизнес по курсу</div>
+    <div class="ticker-item">💰 <strong>Илья</strong> начал инвестировать после курса по финансам</div>
+    <div class="ticker-item">🧠 <strong>Катя</strong> прошла все 14 уроков за 2 недели</div>
+    <div class="ticker-item">✅ <strong>Артём</strong> начал курс по продуктивности</div>
+    <div class="ticker-item">⭐ <strong>Марина</strong> оплатила за 3 секунды через Stars</div>
+    <div class="ticker-item">🎁 <strong>Дима</strong> получил 35 дней за 5 приглашений</div>
+    <div class="ticker-item">🚀 <strong>Алина</strong> запустила бизнес по курсу</div>
+    <div class="ticker-item">💰 <strong>Илья</strong> начал инвестировать после курса по финансам</div>
+    <div class="ticker-item">🧠 <strong>Катя</strong> прошла все 14 уроков за 2 недели</div>
+  </div>
+</div>
+<div class="dv"></div>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="container">
+    <div class="rv"><div class="stag" data-ru="Что ты получишь" data-en="What you get">Что ты получишь</div><h2 class="stitle" data-ru="Всё для твоего роста" data-en="Everything for your growth">Всё для твоего роста</h2><p class="ssub" data-ru="Практика, а не теория. Результат, а не обещания." data-en="Practice, not theory. Results, not promises.">Практика, а не теория. Результат, а не обещания.</p></div>
+    <div class="ben-grid">
+      <div class="ben-card rv d1"><div class="ben-icon">📚</div><div class="ben-title" data-ru="3 полных курса · 14 уроков каждый" data-en="3 full courses · 14 lessons each">3 полных курса · 14 уроков каждый</div><p class="ben-text" data-ru="Продуктивность, финансы, бизнес. Новый урок каждый день прямо в Telegram. Читай когда удобно." data-en="Productivity, finance, business. A new lesson every day in Telegram. Read when it suits you.">Продуктивность, финансы, бизнес. Новый урок каждый день прямо в Telegram. Читай когда удобно.</p><span class="ben-tag">42 урока всего</span></div>
+      <div class="ben-card rv d2"><div class="ben-icon">🤖</div><div class="ben-title" data-ru="AI-наставник 24/7" data-en="AI mentor 24/7">AI-наставник 24/7</div><p class="ben-text" data-ru="Бот отвечает мгновенно. Отслеживает прогресс, напоминает об уроках и мотивирует не бросать." data-en="The bot responds instantly. Tracks progress, reminds you of lessons and keeps you motivated.">Бот отвечает мгновенно. Отслеживает прогресс, напоминает об уроках и мотивирует не бросать.</p><span class="ben-tag">Всегда онлайн</span></div>
+      <div class="ben-card rv d3"><div class="ben-icon">🔗</div><div class="ben-title" data-ru="Персональная ссылка на сайт" data-en="Personal site access link">Персональная ссылка на сайт</div><p class="ben-text" data-ru="После оплаты бот выдаёт одноразовую ссылку только для тебя. Никто другой не может ею воспользоваться. Контент защищён." data-en="After payment the bot sends a one-time link just for you. No one else can use it. Content is protected.">После оплаты бот выдаёт одноразовую ссылку только для тебя. Никто другой не может ею воспользоваться.</p><span class="ben-tag pink">Защита от слива</span></div>
+      <div class="ben-card rv d4"><div class="ben-icon">🎁</div><div class="ben-title" data-ru="Реферальная программа без лимитов" data-en="Unlimited referral program">Реферальная программа без лимитов</div><p class="ben-text" data-ru="Пригласи друга — оба получите +7 дней бесплатно. 10 друзей = 70 дней. Никакого потолка!" data-en="Invite a friend — both get +7 days free. 10 friends = 70 days. No cap!">Пригласи друга — оба получите +7 дней бесплатно. 10 друзей = 70 дней. Никакого потолка!</p><span class="ben-tag">+7 дней за каждого</span></div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- COURSES -->
+<section class="section" id="courses" style="background:rgba(13,22,38,.4)">
+  <div class="container">
+    <div class="rv"><div class="stag" data-ru="Курсы" data-en="Courses">Курсы</div><h2 class="stitle" data-ru="Три направления роста" data-en="Three growth directions">Три направления роста</h2><p class="ssub" data-ru="Первые 4 урока каждого курса — бесплатно. Все 14 уроков — по подписке от 149₽." data-en="First 4 lessons of each course are free. All 14 lessons — with a subscription from 149₽.">Первые 4 урока каждого курса — бесплатно. Все 14 уроков — по подписке от 149₽.</p></div>
+    <div class="c-grid">
+      <div class="c-card rv d1"><div class="c-thumb th1">🧠</div><div class="c-body"><span class="c-tag ct1" data-ru="ПРОДУКТИВНОСТЬ" data-en="PRODUCTIVITY">ПРОДУКТИВНОСТЬ</span><div class="c-name" data-ru="Системное мышление и продуктивность" data-en="Systems Thinking & Productivity">Системное мышление и продуктивность</div><p class="c-desc" data-ru="Управление временем, глубокая работа, привычки чемпионов. От хаоса к системе за 14 дней." data-en="Time management, deep work, champion habits. From chaos to system in 14 days.">Управление временем, глубокая работа, привычки чемпионов. От хаоса к системе за 14 дней.</p><div class="c-foot"><span class="c-days">📅 14 уроков</span><span class="c-free" data-ru="4 БЕСПЛАТНО" data-en="4 FREE">4 БЕСПЛАТНО</span></div></div></div>
+      <div class="c-card rv d2"><div class="c-thumb th2">💰</div><div class="c-body"><span class="c-tag ct2" data-ru="ФИНАНСЫ" data-en="FINANCE">ФИНАНСЫ</span><div class="c-name" data-ru="Финансовая грамотность за 14 дней" data-en="Financial Literacy in 14 Days">Финансовая грамотность за 14 дней</div><p class="c-desc" data-ru="Бюджет, инвестиции, ETF, пассивный доход. Начни с нуля — приди к финансовой свободе." data-en="Budget, investments, ETF, passive income. Start from zero — reach financial freedom.">Бюджет, инвестиции, ETF, пассивный доход. Начни с нуля — приди к финансовой свободе.</p><div class="c-foot"><span class="c-days">📅 14 уроков</span><span class="c-free" data-ru="4 БЕСПЛАТНО" data-en="4 FREE">4 БЕСПЛАТНО</span></div></div></div>
+      <div class="c-card rv d3"><div class="c-thumb th3">🚀</div><div class="c-body"><span class="c-tag ct3" data-ru="БИЗНЕС" data-en="BUSINESS">БИЗНЕС</span><div class="c-name" data-ru="Запуск своего дела с нуля" data-en="Launch Your Business from Scratch">Запуск своего дела с нуля</div><p class="c-desc" data-ru="Идея → MVP → первые продажи → масштаб. Только реальные кейсы и пошаговые действия." data-en="Idea → MVP → first sales → scale. Only real cases and step-by-step actions.">Идея → MVP → первые продажи → масштаб. Только реальные кейсы и пошаговые действия.</p><div class="c-foot"><span class="c-days">📅 14 уроков</span><span class="c-free" data-ru="4 БЕСПЛАТНО" data-en="4 FREE">4 БЕСПЛАТНО</span></div></div></div>
+    </div>
+    <!-- PREVIEW -->
+    <div class="preview-wrap rv" style="margin-top:28px">
+      <div class="preview-tabs">
+        <button class="ptab active" onclick="switchPrev(0,this)">🧠 Продуктивность</button>
+        <button class="ptab" onclick="switchPrev(1,this)">💰 Финансы</button>
+        <button class="ptab" onclick="switchPrev(2,this)">🚀 Бизнес</button>
+      </div>
+      <div id="prev-list" class="preview-list"></div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- HOW -->
+<section class="section">
+  <div class="container">
+    <div class="rv" style="text-align:center"><div class="stag" style="justify-content:center;display:flex" data-ru="Как начать" data-en="How to start">Как начать</div><h2 class="stitle" data-ru="4 шага до первого урока" data-en="4 steps to your first lesson">4 шага до первого урока</h2><p class="ssub" style="margin:0 auto" data-ru="Занимает меньше 2 минут. Никаких паролей и регистраций." data-en="Takes less than 2 minutes. No passwords or registrations.">Занимает меньше 2 минут. Никаких паролей и регистраций.</p></div>
+    <div class="how-grid">
+      <div class="h-card rv d1"><div class="h-num">1</div><div class="h-icon">✈️</div><div class="h-title" data-ru="Открой бота" data-en="Open the bot">Открой бота</div><p class="h-text" data-ru="Нажми кнопку — Telegram откроется сам. Один клик /start и ты внутри." data-en="Press the button — Telegram opens automatically. One click /start and you're in.">Нажми кнопку — Telegram откроется сам. Один клик /start и ты внутри.</p></div>
+      <div class="h-card rv d2"><div class="h-num">2</div><div class="h-icon">🎁</div><div class="h-title" data-ru="7 дней бесплатно" data-en="7 days free">7 дней бесплатно</div><p class="h-text" data-ru="Сразу получаешь пробный доступ. Или пригласи друга — вы оба получите +7 дней." data-en="You immediately get trial access. Or invite a friend — you both get +7 days.">Сразу получаешь пробный доступ. Или пригласи друга — оба получите +7 дней.</p></div>
+      <div class="h-card rv d3"><div class="h-num">3</div><div class="h-icon">💳</div><div class="h-title" data-ru="Купи подписку" data-en="Buy subscription">Купи подписку</div><p class="h-text" data-ru="149₽ на 14 дней. Оплата через СБП, Stars, TON или USDT. Прямо в Telegram." data-en="149₽ for 14 days. Pay via SBP, Stars, TON or USDT. Right in Telegram.">149₽ на 14 дней. СБП, Stars, TON, USDT. Прямо в Telegram.</p></div>
+      <div class="h-card rv d4"><div class="h-num">4</div><div class="h-icon">🌐</div><div class="h-title" data-ru="Учись на сайте" data-en="Learn on site">Учись на сайте</div><p class="h-text" data-ru="Бот пришлёт персональную одноразовую ссылку. Открывай курс здесь в полном формате." data-en="The bot sends your personal one-time link. Open the course here in full format.">Бот пришлёт персональную одноразовую ссылку. Открывай курс здесь.</p></div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="background:rgba(13,22,38,.4)">
+  <div class="container">
+    <div class="rv" style="text-align:center"><div class="stag" style="justify-content:center;display:flex" data-ru="Цены" data-en="Pricing">Цены</div><h2 class="stitle" data-ru="Честно и прозрачно" data-en="Honest and transparent">Честно и прозрачно</h2><p class="ssub" style="margin:0 auto" data-ru="Начни бесплатно. Переходи на полный доступ когда готов." data-en="Start for free. Upgrade when you're ready.">Начни бесплатно. Переходи на полный доступ когда готов.</p></div>
+    <div class="p-grid">
+      <div class="p-card rv d1">
+        <div class="p-plan" data-ru="Пробный период" data-en="Trial">Пробный период</div>
+        <div class="p-price">0<sup>₽</sup></div>
+        <div class="p-per" data-ru="7 дней · бесплатно" data-en="7 days · free">7 дней · бесплатно</div>
+        <ul class="p-features">
+          <li class="yes" data-ru="4 урока из каждого курса" data-en="4 lessons from each course">4 урока из каждого курса</li>
+          <li class="yes" data-ru="Бот в Telegram" data-en="Bot in Telegram">Бот в Telegram</li>
+          <li class="yes" data-ru="Реферальная программа" data-en="Referral program">Реферальная программа</li>
+          <li class="no" data-ru="Все 14 уроков" data-en="All 14 lessons">Все 14 уроков</li>
+          <li class="no" data-ru="Ссылка на сайт" data-en="Site access link">Ссылка на сайт</li>
+        </ul>
+        <a href="https://t.me/MindFlowAcademyBot" class="p-btn ou" target="_blank" data-ru="Начать бесплатно" data-en="Start free">Начать бесплатно</a>
+      </div>
+      <div class="p-card pop rv d2">
+        <div class="p-badge" data-ru="ХИТ" data-en="POPULAR">ХИТ</div>
+        <div class="p-plan" data-ru="Полный доступ" data-en="Full access">Полный доступ</div>
+        <div class="p-price">149<sup>₽</sup></div>
+        <div class="p-per" data-ru="14 дней · полный доступ" data-en="14 days · full access">14 дней · полный доступ</div>
+        <ul class="p-features">
+          <li class="yes" data-ru="Все 14 уроков каждого курса" data-en="All 14 lessons of each course">Все 14 уроков каждого курса</li>
+          <li class="yes" data-ru="3 курса = 42 урока" data-en="3 courses = 42 lessons">3 курса = 42 урока</li>
+          <li class="yes" data-ru="Персональная ссылка на сайт" data-en="Personal site link">Персональная ссылка на сайт</li>
+          <li class="yes" data-ru="Поддержка 24/7" data-en="Support 24/7">Поддержка 24/7</li>
+          <li class="yes" data-ru="Новые курсы каждый месяц" data-en="New courses monthly">Новые курсы каждый месяц</li>
+        </ul>
+        <a href="https://t.me/MindFlowAcademyBot" class="p-btn pr" target="_blank" data-ru="✈️ Купить в Telegram" data-en="✈️ Buy in Telegram">✈️ Купить в Telegram</a>
+      </div>
+      <div class="p-card rv d3">
+        <div class="p-plan" data-ru="Telegram Stars" data-en="Telegram Stars">Telegram Stars</div>
+        <div class="p-price">50<sup>⭐</sup></div>
+        <div class="p-per" data-ru="14 дней · оплата в TG" data-en="14 days · pay in TG">14 дней · оплата в TG</div>
+        <ul class="p-features">
+          <li class="yes" data-ru="Все 14 уроков" data-en="All 14 lessons">Все 14 уроков</li>
+          <li class="yes" data-ru="Мгновенная оплата" data-en="Instant payment">Мгновенная оплата</li>
+          <li class="yes" data-ru="Без банковских карт" data-en="No bank cards needed">Без банковских карт</li>
+          <li class="yes" data-ru="Персональная ссылка" data-en="Personal link">Персональная ссылка</li>
+          <li class="yes" data-ru="Автодоступ сразу" data-en="Auto access instantly">Автодоступ сразу</li>
+        </ul>
+        <a href="https://t.me/MindFlowAcademyBot" class="p-btn pr" target="_blank" data-ru="⭐ Купить за Stars" data-en="⭐ Buy with Stars">⭐ Купить за Stars</a>
+      </div>
+    </div>
+    <div class="pay-row rv">
+      <div class="pay-chip">📱 <strong data-ru="СБП" data-en="SBP">СБП</strong> <span data-ru="— QR-код" data-en="— QR code">— QR-код</span></div>
+      <div class="pay-chip">⭐ <strong>Stars</strong> <span data-ru="— мгновенно" data-en="— instantly">— мгновенно</span></div>
+      <div class="pay-chip">💎 <strong>TON</strong> <span>— 0.5 TON</span></div>
+      <div class="pay-chip">💵 <strong>USDT TRC20</strong> <span>— 2 USDT</span></div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- REFERRAL -->
+<section class="section">
+  <div class="container">
+    <div class="ref-box rv">
+      <div>
+        <div class="stag" data-ru="Реферальная программа" data-en="Referral Program">Реферальная программа</div>
+        <h2 class="ref-title" data-ru="Учись бесплатно — приглашай друзей" data-en="Learn free — invite friends">Учись бесплатно — приглашай друзей</h2>
+        <p class="ref-sub" data-ru="Поделись ссылкой из бота и получай +7 дней за каждого. Без потолка!" data-en="Share your bot link and get +7 days per person. No cap!">Поделись ссылкой из бота и получай +7 дней за каждого. Без потолка!</p>
+        <div class="ref-feats">
+          <div class="rf"><div class="rf-icon">🎁</div><div><div class="rf-title" data-ru="+7 дней за каждого друга" data-en="+7 days per friend">+7 дней за каждого друга</div><div class="rf-text" data-ru="Тебе и другу — автоматически и мгновенно" data-en="To you and your friend — automatically and instantly">Тебе и другу — автоматически и мгновенно</div></div></div>
+          <div class="rf"><div class="rf-icon">♾️</div><div><div class="rf-title" data-ru="Без ограничений" data-en="No limits">Без ограничений</div><div class="rf-text" data-ru="10 друзей = 70 дней. 20 = 140 дней. Никакого потолка" data-en="10 friends = 70 days. 20 = 140 days. No ceiling">10 друзей = 70 дней. 20 = 140 дней. Никакого потолка</div></div></div>
+          <div class="rf"><div class="rf-icon">🔗</div><div><div class="rf-title" data-ru="Ссылка в боте по /status" data-en="Link via /status in bot">Ссылка в боте по /status</div><div class="rf-text" data-ru="TikTok, Instagram, WhatsApp — делись где угодно" data-en="TikTok, Instagram, WhatsApp — share anywhere">TikTok, Instagram, WhatsApp — делись где угодно</div></div></div>
+        </div>
+      </div>
+      <div class="ref-flow">
+        <div class="rs"><div class="rs-circle">1</div><div class="rs-body"><div class="rs-title" data-ru="Открой бота → /status" data-en="Open bot → /status">Открой бота → /status</div><div class="rs-text" data-ru="Бот выдаст твою персональную ссылку" data-en="Bot sends your personal link">Бот выдаст твою персональную ссылку</div></div></div>
+        <div class="rs"><div class="rs-circle">2</div><div class="rs-body"><div class="rs-title" data-ru="Поделись в соцсетях" data-en="Share on social media">Поделись в соцсетях</div><div class="rs-text" data-ru="TikTok, Instagram, Telegram, WhatsApp" data-en="TikTok, Instagram, Telegram, WhatsApp">TikTok, Instagram, Telegram, WhatsApp</div></div></div>
+        <div class="rs"><div class="rs-circle">3</div><div class="rs-body"><div class="rs-title" data-ru="Друг нажимает /start" data-en="Friend presses /start">Друг нажимает /start</div><div class="rs-text" data-ru="Переходит по твоей ссылке в Telegram" data-en="Follows your link in Telegram">Переходит по твоей ссылке в Telegram</div></div></div>
+        <div class="rs"><div class="rs-circle">🎁</div><div class="rs-body"><div class="rs-title" data-ru="Оба получают +7 дней!" data-en="Both get +7 days!">Оба получают +7 дней!</div><div class="rs-text" data-ru="Мгновенно и автоматически" data-en="Instantly and automatically">Мгновенно и автоматически</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews" style="background:rgba(13,22,38,.4)">
+  <div class="container">
+    <div class="rv" style="text-align:center"><div class="stag" style="justify-content:center;display:flex" data-ru="Отзывы" data-en="Reviews">Отзывы</div><h2 class="stitle" data-ru="Что говорят ученики" data-en="What students say">Что говорят ученики</h2><p class="ssub" style="margin:0 auto" data-ru="Реальные отзывы от реальных людей" data-en="Real reviews from real people">Реальные отзывы от реальных людей</p></div>
+    <div class="rev-grid">
+
+      <div class="rev-card rv d1">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Честно, не ожидал что телеграм-бот может настолько круто заменить целый онлайн-курс. Прошёл курс по продуктивности — за первую неделю переделал всё расписание, стал успевать в 1.5 раза больше. Жена заметила изменения даже раньше меня.»</p>
+        <div class="rev-author"><div class="rav rv1">А</div><div><div class="rname">Артём Коваленко</div><div class="rrole">Менеджер проектов, Москва</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d2">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Пригласила 6 подруг — получила почти полтора месяца бесплатного доступа. Курс по финансам просто открыл глаза. Я всю жизнь тратила всё что зарабатываю, а сейчас уже третий месяц откладываю и начала вникать в инвестиции.»</p>
+        <div class="rev-author"><div class="rav rv2">М</div><div><div class="rname">Марина Власова</div><div class="rrole">Дизайнер интерьеров, СПб</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d3">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Запустил своё дело по шагам из курса по бизнесу. Через 2.5 месяца первые 40 000 рублей дохода. Казалось бы, курс за 149 рублей — а реально изменил вектор моей жизни. Теперь рекомендую всем в своём окружении.»</p>
+        <div class="rev-author"><div class="rav rv3">Д</div><div><div class="rname">Дмитрий Сёмин</div><div class="rrole">Предприниматель, Казань</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d1">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Я скептик по природе, но попробовала пробный период — и осталась. Урок по матрице Эйзенхауэра буквально спас меня от выгорания. Теперь понимаю что важно, а что просто создаёт видимость занятости.»</p>
+        <div class="rev-author"><div class="rav rv4">А</div><div><div class="rname">Алина Рябова</div><div class="rrole">HR-директор, Екатеринбург</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d2">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Удивила система с одноразовыми ссылками — это реально умно. Купил доступ, прошёл по ссылке, курс загрузился моментально. Прошёл все 14 уроков по финансам за 3 недели. Открыл брокерский счёт уже на второй неделе.»</p>
+        <div class="rev-author"><div class="rav rv5">И</div><div><div class="rname">Илья Морозов</div><div class="rrole">IT-специалист, Новосибирск</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d3">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Оплатила через Telegram Stars — это было быстрее чем я ожидала. Буквально 10 секунд и доступ уже есть. Курс по продуктивности зашёл очень хорошо, особенно блок про утренние ритуалы. Встаю теперь в 6 утра без будильника.»</p>
+        <div class="rev-author"><div class="rav rv6">К</div><div><div class="rname">Катерина Лебедева</div><div class="rrole">Фрилансер-копирайтер, Краснодар</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d1">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Купил три раза — продлеваю каждые две недели. Это дешевле любого курса на других платформах, а информации столько же если не больше. Сейчас на курсе по бизнесу, на прошлой неделе дошёл до этапа MVP.»</p>
+        <div class="rev-author"><div class="rav rv7">Р</div><div><div class="rname">Роман Тихонов</div><div class="rrole">Студент, Самара</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d2">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Попробовала пробный период и сразу купила подписку — не хотела прерываться. Курс по финансам особенно помог разобраться с долгами. Через 4 месяца закрыла кредитную карту, которую таскала 3 года.»</p>
+        <div class="rev-author"><div class="rav rv8">Н</div><div><div class="rname">Надя Зайцева</div><div class="rrole">Учитель, Воронеж</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+      <div class="rev-card rv d3">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Реферальная система — огонь. Скинул ссылку в свой Telegram-чат — пришло 9 человек. Получил 63 дня бесплатно. Всё работает, всё честно. Бот мгновенно зачисляет дни. Рекомендую всем кто хочет развиваться без лишних трат.»</p>
+        <div class="rev-author"><div class="rav rv9">С</div><div><div class="rname">Сергей Орлов</div><div class="rrole">Контент-мейкер, Тюмень</div><div class="rev-verified">✓ Верифицирован</div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="text-align:center">
+    <div class="rv"><div class="stag" style="justify-content:center;display:flex" data-ru="Частые вопросы" data-en="FAQ">Частые вопросы</div><h2 class="stitle" data-ru="Отвечаем на всё" data-en="We answer everything">Отвечаем на всё</h2></div>
+    <div class="faq-list">
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Как получить доступ к курсам на сайте?" data-en="How to get access to courses on the site?">Как получить доступ к курсам на сайте?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="Запусти бота @MindFlowAcademyBot → купи подписку (149₽, Stars, TON или USDT) → бот пришлёт персональную одноразовую ссылку → вставь в браузер → курс открыт!" data-en="Launch @MindFlowAcademyBot → buy subscription → bot sends personal one-time link → open in browser → course is ready!">Запусти бота @MindFlowAcademyBot → купи подписку → бот пришлёт персональную одноразовую ссылку → вставь в браузер → курс открыт!</p></div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Что такое одноразовая ссылка?" data-en="What is a one-time link?">Что такое одноразовая ссылка?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="Это уникальная ссылка только для тебя. После перехода она сгорает — никто другой не может ею воспользоваться. Новую можно получить в боте в любой момент нажав «Открыть курс на сайте»." data-en="A unique link just for you. After clicking, it expires — no one else can use it. You can get a new one anytime in the bot.">Уникальная ссылка только для тебя. После перехода сгорает — никто другой не может ею воспользоваться. Новую получи в боте нажав «Открыть курс на сайте».</p></div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Как работает пробный период?" data-en="How does the trial work?">Как работает пробный период?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="7 дней бесплатно сразу после старта бота. Доступны первые 4 урока каждого курса. Для всех 14 уроков нужна подписка от 149₽." data-en="7 free days right after starting the bot. First 4 lessons of each course available. All 14 lessons require a subscription.">7 дней бесплатно сразу после /start. Доступны первые 4 урока каждого курса. Для всех 14 уроков — подписка от 149₽.</p></div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Какие способы оплаты есть?" data-en="What payment methods are available?">Какие способы оплаты есть?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="📱 СБП по QR-коду (безопасно, без показа данных карты), ⭐ Telegram Stars (мгновенно), 💎 TON (0.5 TON), 💵 USDT TRC20 (2 USDT). Все способы — прямо в боте." data-en="📱 SBP QR code, ⭐ Telegram Stars (instant), 💎 TON (0.5 TON), 💵 USDT TRC20 (2 USDT). All in the bot.">📱 СБП по QR, ⭐ Telegram Stars (мгновенно), 💎 TON, 💵 USDT TRC20. Все — прямо в боте.</p></div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Как работает реферальная программа?" data-en="How does the referral program work?">Как работает реферальная программа?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="Получи свою ссылку командой /status в боте. Поделись с другом. Когда он зарегистрируется — вы оба получите +7 дней. Без ограничений по количеству." data-en="Get your link via /status in the bot. Share it. When a friend registers — you both get +7 days. Unlimited invites.">Получи ссылку командой /status. Поделись. Друг регистрируется → оба получают +7 дней. Без лимитов.</p></div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span data-ru="Можно ли переслать ссылку другому человеку?" data-en="Can I forward the link to someone else?">Можно ли переслать ссылку другому?</span><span class="faq-ic">+</span></div><div class="faq-a"><p data-ru="Нет — ссылка одноразовая и привязана к твоему аккаунту. После перехода она сгорает. Новую получи в боте нажав «Открыть курс на сайте»." data-en="No — the link is one-time and tied to your account. After clicking it expires. Get a new one in the bot.">Нет — одноразовая, привязана к твоему аккаунту. После перехода сгорает. Новую получи в боте.</p></div></div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- CONTACTS -->
+<section class="section" id="contacts" style="background:rgba(13,22,38,.4)">
+  <div class="container">
+    <div class="rv" style="text-align:center"><div class="stag" style="justify-content:center;display:flex" data-ru="Контакты" data-en="Contacts">Контакты</div><h2 class="stitle" data-ru="Мы всегда на связи" data-en="We're always here">Мы всегда на связи</h2><p class="ssub" style="margin:0 auto" data-ru="Отвечаем в течение 2 часов" data-en="We reply within 2 hours">Отвечаем в течение 2 часов</p></div>
+    <div class="contacts-grid">
+      <div class="con-card rv d1">
+        <div class="con-icon">✈️</div>
+        <div class="con-title">Telegram-бот</div>
+        <div class="con-text" data-ru="Запусти бота и начни учиться прямо сейчас" data-en="Launch the bot and start learning now">Запусти бота и начни учиться прямо сейчас</div>
+        <a href="https://t.me/MindFlowAcademyBot" class="con-link" target="_blank">@MindFlowAcademyBot</a>
+      </div>
+      <div class="con-card rv d2">
+        <div class="con-icon">💬</div>
+        <div class="con-title" data-ru="Поддержка" data-en="Support">Поддержка</div>
+        <div class="con-text" data-ru="Вопросы по подписке, оплате и доступу" data-en="Questions about subscription, payment and access">Вопросы по подписке, оплате и доступу</div>
+        <a href="https://t.me/mindflowsupport" class="con-link" target="_blank">@mindflowsupport</a>
+      </div>
+      <div class="con-card rv d3">
+        <div class="con-icon">📧</div>
+        <div class="con-title" data-ru="Почта" data-en="Email">Почта</div>
+        <div class="con-text" data-ru="Для деловых предложений и партнёрства" data-en="For business proposals and partnerships">Для деловых предложений и партнёрства</div>
+        <a href="mailto:0x0.mayer.0x0@gmail.com" class="con-link">0x0.mayer.0x0@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="dv"></div>
+
+<!-- FINAL CTA -->
+<div class="fcta">
+  <div style="display:inline-block;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:100px;padding:5px 16px;font-size:.7rem;font-weight:600;color:var(--a);margin-bottom:20px;letter-spacing:.08em" data-ru="🚀 НАЧАТЬ СЕЙЧАС" data-en="🚀 START NOW">🚀 НАЧАТЬ СЕЙЧАС</div>
+  <h2 class="fcta-title" data-ru="Твой первый урок уже ждёт" data-en="Your first lesson is waiting">Твой первый урок уже ждёт</h2>
+  <p class="fcta-sub" data-ru="7 дней бесплатного доступа. Без карты. Без риска. Мгновенный старт." data-en="7 days free access. No card. No risk. Instant start.">7 дней бесплатного доступа. Без карты. Без риска. Мгновенный старт.</p>
+  <a href="https://t.me/MindFlowAcademyBot" class="btn-hero" target="_blank">✈️ <span data-ru="Запустить бота бесплатно" data-en="Start Bot for Free">Запустить бота бесплатно</span></a>
+  <div class="cnt-line">⏰ <span data-ru="Сегодня уже" data-en="Today already">Сегодня уже</span> <strong id="cnt">1 247</strong> <span data-ru="человек начали обучение" data-en="people started learning">человек начали обучение</span></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo" style="font-size:1.15rem">Mind<em style="color:var(--a);font-style:normal">Flow</em></a>
+    <div class="f-links">
+      <a href="#" data-ru="Политика конфиденциальности" data-en="Privacy Policy">Политика конфиденциальности</a>
+      <a href="https://t.me/MindFlowAcademyBot" target="_blank" data-ru="Telegram-бот" data-en="Telegram Bot">Telegram-бот</a>
+      <a href="https://t.me/mindflowsupport" target="_blank" data-ru="Поддержка" data-en="Support">Поддержка</a>
+      <a href="mailto:0x0.mayer.0x0@gmail.com" data-ru="Почта" data-en="Email">Почта</a>
+    </div>
+    <div class="f-copy">© 2025 MindFlow Academy</div>
+  </div>
+</footer>
+
+<!-- AI CHAT -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-head"><div class="chat-av">🧠</div><div><div class="chat-name-t">MindFlow AI</div><div class="chat-on">● онлайн</div></div></div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="cm bot" data-ru="👋 Привет! Я AI-ассистент MindFlow. Задай любой вопрос о курсах или подписке!" data-en="👋 Hi! I'm MindFlow AI assistant. Ask me anything about courses or subscription!">👋 Привет! Я AI-ассистент MindFlow. Задай любой вопрос о курсах или подписке!</div>
+    </div>
+    <div class="chat-inp-row">
+      <input class="chat-inp" id="chatInp" placeholder="Напиши вопрос..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button class="chat-bubble-btn" onclick="toggleChat()">🧠</button>
+</div>
+
+<script>
+// PROGRESS BAR
+window.addEventListener('scroll',()=>{document.getElementById('pb').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'});
+
+// REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// LANG
+let lang='ru';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('[data-ru]').forEach(el=>{
+    if(l==='ru'&&el.dataset.ru)el.textContent=el.dataset.ru;
+    else if(l==='en'&&el.dataset.en)el.textContent=el.dataset.en;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.textContent.trim()===l.toUpperCase())b.classList.add('active')});
+  document.getElementById('chatMsgs').querySelector('.cm.bot').textContent=
+    l==='ru'?'👋 Привет! Я AI-ассистент MindFlow. Задай любой вопрос о курсах или подписке!':'👋 Hi! I\'m MindFlow AI assistant. Ask me anything about courses or subscription!';
+}
+
+// COURSE PREVIEW
+const prev=[
+  ["Основы системного мышления","Управление временем","Матрица Эйзенхауэра","Глубокая работа","Привычки чемпионов","Энергия и восстановление","Утренние ритуалы","Вечерний разбор дня","Борьба с прокрастинацией","Фокус и концентрация","Делегирование задач","Автоматизация процессов","Системный обзор недели","Финальный план действий"],
+  ["Финансовый аудит","Правило 50/30/20","Подушка безопасности","Долги и кредиты","Введение в инвестиции","ETF и индексные фонды","Дивидендные акции","Крипта и DeFi","Пассивный доход","Налоги и вычеты","Финансовые цели","Страхование жизни","Пенсионный план","Финансовая свобода"],
+  ["Поиск бизнес-идеи","Анализ рынка","Бизнес-модель Canvas","Создание MVP","Первые продажи","Маркетинг без бюджета","Контент и соцсети","Работа с клиентами","Найм и команда","Финансы бизнеса","Автоматизация","Масштабирование","Партнёрства","Бизнес на автопилоте"]
+];
+let curP=0;
+function renderPrev(){
+  document.getElementById('prev-list').innerHTML=prev[curP].map((n,i)=>{
+    const cls=i<3?'pn-done':i===3?'pn-free':'pn-lock';
+    const ic=i<3?'✓':i===3?'▶':'🔒';
+    const badge=i<4?`<span class="pl-badge free">${i<3?'Пройдено':'Бесплатно'}</span>`:`<span class="pl-badge lock">149₽</span>`;
+    return `<div class="pl-item"><div class="pl-num ${cls}">${ic}</div><div class="pl-name">День ${i+1}: ${n}</div>${badge}</div>`;
+  }).join('');
+}
+function switchPrev(i,btn){curP=i;renderPrev();document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}
+renderPrev();
+
+// FAQ
+function toggleFaq(el){
+  const item=el.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// COUNTER
+let cnt=1247;
+setInterval(()=>{if(Math.random()>.65){cnt+=Math.floor(Math.random()*3)+1;document.getElementById('cnt').textContent=cnt.toLocaleString('ru')}},5000);
+
+// REF PARAM
+const ref=new URLSearchParams(window.location.search).get('ref')||'';
+const base='https://t.me/MindFlowAcademyBot';
+const link=ref?`${base}?start=ref${ref}`:base;
+document.querySelectorAll('a[href="https://t.me/MindFlowAcademyBot"]').forEach(a=>a.href=link);
+
+// AI CHAT
+const replies={
+  'курс':['У нас 3 курса: 🧠 Продуктивность, 💰 Финансы, 🚀 Бизнес. 14 уроков каждый. Первые 4 — бесплатно!','Все курсы практические — новый урок каждый день в Telegram.'],
+  'цена':['Подписка 149₽ на 14 дней. Или 50 Telegram Stars. Или 0.5 TON. Или 2 USDT.','Пробный период — 7 дней бесплатно!'],
+  'бесплатно':['Да! 7 дней бесплатного доступа сразу после /start. Или пригласи друга — оба получите +7 дней!','Реферальная программа без ограничений — пригласи 10 = 70 дней бесплатно!'],
+  'оплата':['📱 СБП по QR, ⭐ Telegram Stars, 💎 TON, 💵 USDT TRC20. Всё в боте!','Самый быстрый — Telegram Stars. Мгновенно, прямо в Telegram!'],
+  'ссылка':['После оплаты бот пришлёт одноразовую ссылку только для тебя. Она сгорает после перехода. Новую можно получить в любой момент.','Ссылка персональная — никто другой не сможет ею воспользоваться.'],
+  'реферал':['Получи ссылку командой /status → поделись → друг регистрируется → оба получают +7 дней!','Без ограничений! 10 друзей = 70 дней бесплатно.'],
+  'поддержка':['Пиши в @mindflowsupport или на почту 0x0.mayer.0x0@gmail.com. Ответим в течение 2 часов!',''],
+  'default':['Запусти бота @MindFlowAcademyBot и начни прямо сейчас! 🚀','Хочешь попробовать бесплатно? Переходи в @MindFlowAcademyBot!','Задай вопрос подробнее — расскажу всё!']
+};
+function toggleChat(){document.getElementById('chatPanel').classList.toggle('open')}
+function sendChat(){
+  const inp=document.getElementById('chatInp');
+  const msgs=document.getElementById('chatMsgs');
+  const text=inp.value.trim();
+  if(!text)return;
+  msgs.innerHTML+=`<div class="cm usr">${text}</div>`;
+  inp.value='';
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    const lower=text.toLowerCase();
+    let reply=replies.default[Math.floor(Math.random()*replies.default.length)];
+    for(const[k,v]of Object.entries(replies)){if(k!=='default'&&lower.includes(k)){reply=v[Math.floor(Math.random()*v.length)];break}}
+    msgs.innerHTML+=`<div class="cm bot">${reply}</div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  },700);
+}
+</script>
+</body>
+</html>
